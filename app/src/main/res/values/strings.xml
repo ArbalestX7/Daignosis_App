@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Daignosis App</string>
     <string name="daignosis">Daignosis</string>
+
+    //Homepage
+    <string name="recent_article">Recent Articles</string>
+    <string name="other">Other</string>
+    <string name="main_feature">Main Feature</string>
 </resources>
