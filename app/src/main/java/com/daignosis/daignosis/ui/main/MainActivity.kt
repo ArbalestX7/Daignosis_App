@@ -1,4 +1,4 @@
-package com.daignosis.daignosis
+package com.daignosis.daignosis.ui.main
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity

@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#6D6D6D</color>
-    
+
     <color name="old_green">#1E5631</color>
+    <color name="cerulean">#247BA0</color>
+    <color name="verdigris">#70C1B3</color>
+    <color name="celadon">#B2DBBF</color>
 </resources>

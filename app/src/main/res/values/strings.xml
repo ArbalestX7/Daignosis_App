@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Daignosis App</string>
-    <string name="daignosis">Daignosis</string>
+    <string name="daignosis">Daignosis</string>\
+
+    //ContentDesc
+    <string name="logo_daig">Daignosis Logo</string>
+
+    //Loginpage
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register_desc">Don\'t have any account ?</string>
+    <string name="register">Register Now!!!</string>
 
     //Homepage
     <string name="recent_article">Recent Articles</string>
