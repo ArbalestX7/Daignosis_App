@@ -1,19 +1,67 @@
 <resources>
     <string name="app_name">Daignosis App</string>
-    <string name="daignosis">Daignosis</string>\
+    <string name="daignosis">Daignosis</string>
+
+    //preview tools
+    <string name="title_article">Siapa saja yang rentan terkena osteoporosis ?</string>
+    <string name="date_article">Sabtu, 27 Mei 2023</string>
 
     //ContentDesc
     <string name="logo_daig">Daignosis Logo</string>
+    <string name="article_photo">Foto Artikel</string>
 
     //Loginpage
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in">Log In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="register_desc">Don\'t have any account ?</string>
-    <string name="register">Register Now!!!</string>
+    <string name="register_desc">Apakah Anda belum punya akun ?</string>
+    <string name="register"><u>Register</u></string>
+    <string name="forgot">Forgot Password ?</string>
+    <string name="invalid_email">Format Email salah</string>
+
+    //Register
+    <string name="user">Username</string>
+    <string name="back">Kembali</string>
+    <string name="regis">Register</string>
+
 
     //Homepage
-    <string name="recent_article">Recent Articles</string>
-    <string name="other">Other</string>
-    <string name="main_feature">Main Feature</string>
+    <string name="recent_article">Artikel Terbaru</string>
+    <string name="other">Lainnya</string>
+    <string name="main_feature">Konsultasi</string>
+    <string name="konsul_ai">Konsultasi Dengan AI</string>
+
+    //Article
+    <string name="title_topbar_listArtikel">Artikel</string>
+    <string name="title_topbar_detail">Detail Artikel</string>
+    <string name="verified"> - Artikel ini telah terverifikasi oleh tim Daignosis</string>
+
+    <string name="desc">Daignosis, Jakarta – Osteoporosis adalah masalah tulang yang paling diwaspadai oleh orang lanjut usia.
+
+Osteoporosis mampu membuat tulang menjadi lemah dan rapuh, sehingga membuat postur pengidapnya membungkuk hingga berisiko mengalami patah tulang. Patah tulang akibat osteoporosis rentan terjadi di bagian pinggul, pergelangan tangan, atau tulang belakang.
+
+Seiring bertambahnya usia, kepadatan tulang otomatis menurun. Bukan itu saja, pembentukan tulang yang baru pun melambat dan tidak seimbang dengan yang mengeropos. Lantas, apakah kondisi ini hanya berisiko dialami oleh lansia saja? Simak penjelasan berikut.
+
+Individu yang Rentan Terserang Osteoporosis
+Usia memang menjadi faktor risiko utama osteoporosis. Pasalnya, kepadatan tulang akan mencapai puncaknya saat menginjak usia 30 tahun. Melewati usia tersebut, kamu akan mulai kehilangan massa tulang. Namun, usia ternyata bukan satu-satunya faktor risiko osteoporosis, orang dengan kondisi berikut ini juga rentan mengalami osteoporosis.
+
+1. Wanita
+Wanita terutama yang sudah menginjak usia 50 tahun ke atas adalah kelompok individu yang paling rentan terserang osteoporosis. Peluangnya pun lebih besar empat kali lipat daripada pria. Alasannya, tulang wanita lebih ringan dan punya peluang umur yang lebih panjang. Meski begitu, bukan berarti pria tidak berisiko juga, ya. Pria juga berisiko mengalami osteoporosis, tetapi dengan peluang yang lebih kecil.
+2. Keturunan Osteoporosis
+Jika kakek, nenek, atau bahkan orangtua kamu mengalami tanda-tanda osteoporosis, seperti patah tulang pinggul setelah jatuh ringan, kemungkinan besar kamu juga bisa mengalaminya di kemudian hari.
+3. Struktur Tulang dan Berat Badan
+Kamu pasti berpikir kalau orang yang bertubuh gemuk lebih rentan mengalami osteoporosis. Ternyata ini kurang tepat. Seseorang yang bertubuh mungil atau berberat badan rendah justru berpeluang lebih besar mengalami osteoporosis. Alasannya, wanita dengan postur tersebut memiliki lebih sedikit tulang untuk dihilangkan dibandingkan dengan orang gemuk yang punya kerangka lebih besar.
+Baca juga: Osteoporosis Bisa Terjadi Sejak Kecil, Benarkah?
+4. Pernah Patah Tulang
+Kalau kamu pernah mengalami patah tulang sebelumnya, kamu mungkin berisiko mengalami osteoporosis di kemudian hari. Ini karena, kondisi tulang kamu sudah tidak begitu kuat lagi.
+5. Etnis
+Melansir dari WebMD, wanita Kaukasia dan Asia punya risiko lebih besar mengembangkan osteoporosis dibandingkan wanita dari etnis lain. Risiko patah pinggul juga berpeluang lebih besar dialami wanita Kaukasia daripada wanita Afrika-Amerika.
+6. Mengidap Penyakit
+Orang yang mengidap penyakit tertentu, seperti rheumatoid arthritis punya kemungkinan osteoporosis lebih besar daripada yang lain.
+7. Mengonsumsi Obat
+Penggunaan obat-obatan tertentu dalam jangka waktu panjang, seperti prednison diketahui mampu meningkatkan risiko osteoporosis lebih besar. Kalau kamu sedang meminum obat ini, sebaiknya diskusikan dengan dokter lebih lanjut terkait manfaat dan efek sampingnya dalam jangka panjang. Kamu bisa bertanya ke dokter lewat aplikasi Halodoc terkait hal ini.
+8. Pola Hidup Tidak Sehat
+Merokok dan minum alkohol ada gaya hidup yang mampu memengaruhi kondisi tulang. Bukan cuma tulang saja, merokok dan minum alkohol juga bisa menimbulkan berbagai masalah kesehatan lainnya. Minum alkohol dalam jumlah banyak dapat menyebabkan penipisan tulang dan lebih mungkin membuat patah tulang.
+</string>
+
 </resources>

@@ -11,7 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaignosisApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.article.DetailArticleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.article.ArticleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.splashscreen.SplashActivity"
             android:exported="true">
@@ -21,14 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
     </application>
+
 </manifest>

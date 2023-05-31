@@ -4,4 +4,8 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#3E7A9C</item>
     </style>
+
+    <style name="RoundedSquare">
+        <item name="cornerSize">18%</item>
+    </style>
 </resources>
