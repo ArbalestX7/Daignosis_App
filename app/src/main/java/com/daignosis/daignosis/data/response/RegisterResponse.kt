@@ -5,28 +5,16 @@ import com.google.gson.annotations.SerializedName
 data class RegisterResponse(
 
 	@field:SerializedName("data")
-	val registerResult: RegisterResult,
+	val dataRegis: DataRegis,
+
+	@field:SerializedName("error")
+	val error: Boolean,
 
 	@field:SerializedName("message")
-	val message: String,
-
-	@field:SerializedName("token")
-	val token: String
+	val message: String
 )
 
-data class RegisterResult(
-
-	@field:SerializedName("birthday")
-	val birthday: Any,
-
-	@field:SerializedName("full_name")
-	val fullName: Any,
-
-	@field:SerializedName("photo_profile")
-	val photoProfile: Any,
-
-	@field:SerializedName("phone_number")
-	val phoneNumber: Any,
+data class DataRegis(
 
 	@field:SerializedName("email")
 	val email: String,

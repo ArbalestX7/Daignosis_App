@@ -6,47 +6,41 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.daignosis.daignosis.data.entity.UserEntity
+import com.daignosis.daignosis.data.response.Data
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class UserPref private constructor(private val dataStore: DataStore<Preferences>) {
 
-    fun getToken(): Flow<String> {
-        return dataStore.data.map { preferences ->
-            preferences[TOKEN_KEY] ?: ""
-        }
-    }
-
-    fun getUser(): Flow<UserEntity> {
-        return dataStore.data.map { preferences ->
-            UserEntity(
-                preferences[NAME_KEY] ?: "",
-                preferences[EMAIL_KEY] ?: "",
-                preferences[PASSWORD_KEY] ?: "",
-                preferences[STATE_KEY] ?: false,
-                preferences[TOKEN_KEY] ?: ""
+    fun getToken(): Flow<Data> {
+        return dataStore.data.map { pref ->
+            Data(
+                pref[BIRTHDAY_KEY] ?:"",
+                pref[FULLNAME_KEY] ?:"",
+                pref[PHOTO_KEY] ?:"",
+                pref[PHONE_KEY] ?:"",
+                pref[EMAIL_KEY] ?:"",
+                pref[USERNAME_KEY] ?:"",
+                pref[TOKEN_KEY] ?:""
             )
         }
     }
 
-    suspend fun saveUser(user: UserEntity) {
-        dataStore.edit { preferences ->
-            preferences[NAME_KEY] = user.name
-            preferences[EMAIL_KEY] = user.email
-            preferences[PASSWORD_KEY] = user.password
-            preferences[STATE_KEY] = user.isLogin
-            preferences[TOKEN_KEY] = user.token
+    suspend fun saveTokenUser(user: Data){
+        dataStore.edit { preference ->
+            preference[BIRTHDAY_KEY] = user.birthday
+            preference[FULLNAME_KEY] = user.fullName
+            preference[PHOTO_KEY] = user.photoProfile
+            preference[PHONE_KEY] = user.phoneNumber
+            preference[EMAIL_KEY] = user.email
+            preference[USERNAME_KEY] = user.username
+            preference[TOKEN_KEY] = user.token
         }
     }
 
-
-    suspend fun logout() {
-        dataStore.edit { preferences ->
-            preferences[NAME_KEY] = ""
-            preferences[EMAIL_KEY] = ""
-            preferences[PASSWORD_KEY] = ""
-            preferences[STATE_KEY] = false
-            preferences[TOKEN_KEY] = ""
+    suspend fun logout(){
+        dataStore.edit { pref ->
+            pref[TOKEN_KEY] = ""
         }
     }
 
@@ -54,10 +48,12 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         @Volatile
         private var INSTANCE: UserPref? = null
 
-        private val NAME_KEY = stringPreferencesKey("name")
+        private val BIRTHDAY_KEY = stringPreferencesKey("birthday")
+        private val FULLNAME_KEY = stringPreferencesKey("fullname")
+        private val PHOTO_KEY = stringPreferencesKey("photo")
+        private val PHONE_KEY = stringPreferencesKey("phone")
         private val EMAIL_KEY = stringPreferencesKey("email")
-        private val PASSWORD_KEY = stringPreferencesKey("password")
-        private val STATE_KEY = booleanPreferencesKey("state")
+        private val USERNAME_KEY = stringPreferencesKey("username")
         private val TOKEN_KEY = stringPreferencesKey("token")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPref {

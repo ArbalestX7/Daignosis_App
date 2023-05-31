@@ -11,6 +11,8 @@
     <string name="article_photo">Foto Artikel</string>
 
     //Loginpage
+    <string name="snack_login">Login Berhasil !</string>
+    <string name="snack_loginError">Login Gagal !</string>
     <string name="sign_in">Log In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -20,6 +22,8 @@
     <string name="invalid_email">Format Email salah</string>
 
     //Register
+    <string name="snack_regis">Register Berhasil !</string>
+    <string name="snack_regisError">Register Gagal !</string>
     <string name="user">Username</string>
     <string name="back">Kembali</string>
     <string name="regis">Register</string>

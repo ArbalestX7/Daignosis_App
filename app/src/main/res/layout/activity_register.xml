@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_login"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.register.RegisterActivity">
 
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/img_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="150dp"
@@ -29,22 +31,22 @@
         app:srcCompat="@drawable/logo_login" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_loginpage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/inter_bold"
-        android:text="@string/register"
+        android:text="@string/regis"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/img_logo" />
 
 
     <LinearLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/linearLayout"
         android:layout_width="350dp"
         android:layout_height="360dp"
         android:layout_marginTop="25dp"
@@ -52,7 +54,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/tv_loginpage">
 
         <TextView
             android:id="@+id/tv_username"
@@ -79,7 +81,7 @@
             tools:layout_editor_absoluteX="37dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_login_username"
+                android:id="@+id/edt_regis_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/container_shape"
@@ -111,7 +113,7 @@
             tools:layout_editor_absoluteX="37dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_login_email"
+                android:id="@+id/edt_regis_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/container_shape"
@@ -148,7 +150,7 @@
             tools:layout_editor_absoluteX="37dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_login_pw"
+                android:id="@+id/edt_regis_pw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/container_shape"
@@ -160,7 +162,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_loginpage"
+        android:id="@+id/btn_regispage"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:layout_marginTop="21dp"
@@ -172,7 +174,7 @@
         android:textColor="@color/white"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
         android:id="@+id/btn_back"
@@ -185,7 +187,7 @@
         android:textAllCaps="false"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
