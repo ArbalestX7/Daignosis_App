@@ -10,6 +10,7 @@ import com.daignosis.daignosis.data.api.ApiService
 import com.daignosis.daignosis.data.model.LoginModel
 import com.daignosis.daignosis.data.model.RegisterModel
 import com.daignosis.daignosis.data.response.Data
+import com.daignosis.daignosis.data.response.ForgotpwResponse
 import com.daignosis.daignosis.data.response.LoginResponse
 import com.daignosis.daignosis.data.response.RegisterResponse
 import com.daignosis.daignosis.utils.UserPref
@@ -98,5 +99,36 @@ class DaignosisRepository (
             }
         })
         return register
+    }
+
+    fun forgotPw(username: String): LiveData<Result<Boolean>> {
+        val forgot = MutableLiveData<Result<Boolean>>()
+        forgot.value = Result.Loading
+
+        val client = apiService.postForgotpw(username)
+        client.enqueue(object : Callback<ForgotpwResponse> {
+            override fun onResponse(
+                call: Call<ForgotpwResponse>,
+                response: Response<ForgotpwResponse>,
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null && responseBody.success) {
+                        forgot.value = Result.Success(true)
+                    } else {
+                        forgot.value = Result.Error("Error Response")
+                        Log.e(ContentValues.TAG, "onResponse(E): ${response.message()}" )
+                    }
+                } else {
+                    forgot.value = Result.Error("Error")
+                }
+            }
+
+            override fun onFailure(call: Call<ForgotpwResponse>, t: Throwable) {
+                forgot.value = Result.Error("Error OnFailure")
+                Log.e(ContentValues.TAG, "onFailure(T): ${t.message}")
+            }
+        })
+        return forgot
     }
 }

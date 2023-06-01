@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.R
 import com.daignosis.daignosis.data.model.LoginModel
 import com.daignosis.daignosis.databinding.ActivityLoginBinding
+import com.daignosis.daignosis.ui.forgotpw.ForgotPwActivity
 import com.daignosis.daignosis.ui.main.MainActivity
 import com.daignosis.daignosis.ui.register.RegisterActivity
 import com.daignosis.daignosis.utils.ViewModelFactory
@@ -51,6 +52,10 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnRegis.setOnClickListener{
             startActivity(Intent(this,RegisterActivity::class.java))
+        }
+
+        binding.btnForgot.setOnClickListener {
+            startActivity(Intent(this,ForgotPwActivity::class.java))
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.di.Injection
+import com.daignosis.daignosis.ui.forgotpw.ForgotViewModel
 import com.daignosis.daignosis.ui.login.LoginViewModel
 import com.daignosis.daignosis.ui.register.RegisterViewModel
 
@@ -16,6 +17,9 @@ class ViewModelFactory (private val context: Context) : ViewModelProvider.NewIns
             }
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(Injection.provideRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(ForgotViewModel::class.java) -> {
+                ForgotViewModel(Injection.provideRepository(context)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

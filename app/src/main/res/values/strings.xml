@@ -28,6 +28,12 @@
     <string name="back">Kembali</string>
     <string name="regis">Register</string>
 
+    //Forgotpw
+    <string name="forgot_pw">Forgot Password</string>
+    <string name="apply">Submit</string>
+    <string name="snack_forgot">Cek password baru mu di Inbox/Spam Emailmu !</string>
+    <string name="snack_forgotError">Username Tidak Valid !</string>
+
 
     //Homepage
     <string name="recent_article">Artikel Terbaru</string>
