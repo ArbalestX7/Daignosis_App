@@ -41,6 +41,9 @@
     <string name="main_feature">Konsultasi</string>
     <string name="konsul_ai">Konsultasi Dengan AI</string>
 
+    //Profile
+    <string name="profile">Profil</string>
+
     //Article
     <string name="title_topbar_listArtikel">Artikel</string>
     <string name="title_topbar_detail">Detail Artikel</string>

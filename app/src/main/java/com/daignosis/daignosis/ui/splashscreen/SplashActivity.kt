@@ -6,10 +6,14 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.databinding.ActivitySplashBinding
+import com.daignosis.daignosis.ui.login.LoginActivity
 import com.daignosis.daignosis.ui.main.MainActivity
+import com.daignosis.daignosis.utils.ViewModelFactory
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -26,7 +30,6 @@ class SplashActivity : AppCompatActivity() {
 
         handler = Handler()
         handler.postDelayed({
-            //setupViewModel()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         },timer.toLong())

@@ -9,10 +9,7 @@ import androidx.lifecycle.liveData
 import com.daignosis.daignosis.data.api.ApiService
 import com.daignosis.daignosis.data.model.LoginModel
 import com.daignosis.daignosis.data.model.RegisterModel
-import com.daignosis.daignosis.data.response.Data
-import com.daignosis.daignosis.data.response.ForgotpwResponse
-import com.daignosis.daignosis.data.response.LoginResponse
-import com.daignosis.daignosis.data.response.RegisterResponse
+import com.daignosis.daignosis.data.response.*
 import com.daignosis.daignosis.utils.UserPref
 import com.daignosis.daignosis.utils.Result
 import kotlinx.coroutines.MainScope
@@ -130,5 +127,69 @@ class DaignosisRepository (
             }
         })
         return forgot
+    }
+
+    fun getListArticle(): Pair<LiveData<Result<Boolean>>, LiveData<List<DataItem>>>{
+        val allArticle = MutableLiveData<List<DataItem>>()
+        val progress = MutableLiveData<Result<Boolean>>()
+
+        progress.value = Result.Loading
+        val client = apiService.getAllArticle()
+        client.enqueue(object: Callback<ArticleResponse> {
+            override fun onResponse(
+                call: Call<ArticleResponse>,
+                response: Response<ArticleResponse>
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if(responseBody != null){
+                        allArticle.value = responseBody.data
+                        progress.value = Result.Success(true)
+                    }else{
+                        Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
+                        progress.value = Result.Error("Error")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ArticleResponse>, t: Throwable) {
+                progress.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+
+        })
+        return Pair(progress,allArticle)
+    }
+
+    fun getArticleLimit(): Pair<LiveData<Result<Boolean>>, LiveData<List<DataItem>>>{
+        val allArticle = MutableLiveData<List<DataItem>>()
+        val progress = MutableLiveData<Result<Boolean>>()
+
+        progress.value = Result.Loading
+        val client = apiService.getMainArticle()
+        client.enqueue(object: Callback<ArticleResponse> {
+            override fun onResponse(
+                call: Call<ArticleResponse>,
+                response: Response<ArticleResponse>
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if(responseBody != null){
+                        allArticle.value = responseBody.data
+                        progress.value = Result.Success(true)
+                    }else{
+                        Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
+                        progress.value = Result.Error("Error")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ArticleResponse>, t: Throwable) {
+                progress.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+
+        })
+        return Pair(progress,allArticle)
     }
 }

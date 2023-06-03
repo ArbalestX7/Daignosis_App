@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.di.Injection
+import com.daignosis.daignosis.ui.article.ArticleViewModel
 import com.daignosis.daignosis.ui.forgotpw.ForgotViewModel
 import com.daignosis.daignosis.ui.login.LoginViewModel
+import com.daignosis.daignosis.ui.main.MainViewModel
 import com.daignosis.daignosis.ui.register.RegisterViewModel
 
 class ViewModelFactory (private val context: Context) : ViewModelProvider.NewInstanceFactory() {
@@ -20,6 +22,12 @@ class ViewModelFactory (private val context: Context) : ViewModelProvider.NewIns
             }
             modelClass.isAssignableFrom(ForgotViewModel::class.java) -> {
                 ForgotViewModel(Injection.provideRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+                MainViewModel(Injection.provideRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(ArticleViewModel::class.java) -> {
+                ArticleViewModel(Injection.provideRepository(context)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
