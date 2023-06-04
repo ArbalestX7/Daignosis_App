@@ -93,13 +93,14 @@
 
     <TextView
         android:id="@+id/tv_newarticle"
+        style="@android:style/Widget.DeviceDefault.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="45dp"
         android:fontFamily="@font/inter_bold"
         android:text="@string/recent_article"
-        android:textColor="@color/black"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />

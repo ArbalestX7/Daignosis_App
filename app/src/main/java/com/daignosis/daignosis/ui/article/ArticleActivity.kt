@@ -14,6 +14,7 @@ import com.daignosis.daignosis.ui.adapter.ArticleAdapter
 import com.daignosis.daignosis.ui.main.MainActivity
 import com.daignosis.daignosis.utils.ViewModelFactory
 
+@Suppress("DEPRECATION")
 class ArticleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArticleBinding
     private lateinit var articleViewModel: ArticleViewModel
@@ -41,7 +42,7 @@ class ArticleActivity : AppCompatActivity() {
         }
 
         binding.btnBackArticleList.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            onBackPressed()
         }
     }
 

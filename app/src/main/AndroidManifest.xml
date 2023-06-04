@@ -14,6 +14,9 @@
         android:theme="@style/Theme.DaignosisApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.consultation.ConsultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.forgotpw.ForgotPwActivity"
             android:exported="false" />
         <activity

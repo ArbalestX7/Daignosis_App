@@ -98,32 +98,33 @@ class DaignosisRepository (
         return register
     }
 
-    fun forgotPw(username: String): LiveData<Result<Boolean>> {
+    fun forgotPw (username: String): LiveData<Result<Boolean>> {
         val forgot = MutableLiveData<Result<Boolean>>()
-        forgot.value = Result.Loading
 
+        forgot.value = Result.Loading
         val client = apiService.postForgotpw(username)
-        client.enqueue(object : Callback<ForgotpwResponse> {
+        client.enqueue(object: Callback<ForgotResponse>{
             override fun onResponse(
-                call: Call<ForgotpwResponse>,
-                response: Response<ForgotpwResponse>,
+                call: Call<ForgotResponse>,
+                response: Response<ForgotResponse>,
             ) {
-                if (response.isSuccessful) {
+                if (response.isSuccessful){
                     val responseBody = response.body()
-                    if (responseBody != null && responseBody.success) {
+                    if (responseBody != null && !responseBody.error) {
                         forgot.value = Result.Success(true)
                     } else {
-                        forgot.value = Result.Error("Error Response")
-                        Log.e(ContentValues.TAG, "onResponse(E): ${response.message()}" )
+                        forgot.value = Result.Error("Error")
+                        Log.e(ContentValues.TAG, "onResponse: Fail ${response.message()}" )
                     }
                 } else {
                     forgot.value = Result.Error("Error")
+                    Log.e(ContentValues.TAG, "onResponse: isError ${response.message()}" )
                 }
             }
 
-            override fun onFailure(call: Call<ForgotpwResponse>, t: Throwable) {
-                forgot.value = Result.Error("Error OnFailure")
-                Log.e(ContentValues.TAG, "onFailure(T): ${t.message}")
+            override fun onFailure(call: Call<ForgotResponse>, t: Throwable) {
+                forgot.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure: ${t.message.toString()}" )
             }
         })
         return forgot

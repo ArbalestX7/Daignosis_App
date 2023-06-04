@@ -17,4 +17,6 @@
     <color name="verdigris">#70C1B3</color>
     <color name="celadon">#B2DBBF</color>
     <color name="prussian_blue">#003559</color>
+
+    <color name="firebase_gray">#ECEFF1</color>
 </resources>

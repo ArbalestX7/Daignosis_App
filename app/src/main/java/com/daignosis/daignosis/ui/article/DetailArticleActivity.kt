@@ -23,7 +23,7 @@ class DetailArticleActivity : AppCompatActivity() {
         setDetail()
 
         binding.btnBackArticleDetail.setOnClickListener {
-            startActivity(Intent(this,ArticleActivity::class.java))
+            onBackPressed()
         }
 
     }

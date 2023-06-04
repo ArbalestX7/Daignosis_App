@@ -9,6 +9,7 @@
     //ContentDesc
     <string name="logo_daig">Daignosis Logo</string>
     <string name="article_photo">Foto Artikel</string>
+    <string name="photo_profile">Foto Profil</string>
 
     //Loginpage
     <string name="snack_login">Login Berhasil !</string>
@@ -40,6 +41,10 @@
     <string name="other">Lainnya</string>
     <string name="main_feature">Konsultasi</string>
     <string name="konsul_ai">Konsultasi Dengan AI</string>
+
+    //Konsul page
+    <string name="chat_example">Hai, Zeta! Perkenalkan saya Daignosis yang akan membantu diagnosis penyakit Anda. Keluhan apa yang Anda rasakan?</string>
+    <string name="chat_box_hint">Ketik Keluhan Anda</string>
 
     //Profile
     <string name="profile">Profil</string>

@@ -1,9 +1,6 @@
 package com.daignosis.daignosis.data.api
 
-import com.daignosis.daignosis.data.response.ArticleResponse
-import com.daignosis.daignosis.data.response.ForgotpwResponse
-import com.daignosis.daignosis.data.response.LoginResponse
-import com.daignosis.daignosis.data.response.RegisterResponse
+import com.daignosis.daignosis.data.response.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -31,7 +28,7 @@ interface ApiService {
     @POST("/user/forgot-password")
     fun postForgotpw(
         @Field("username") username: String
-    ): Call<ForgotpwResponse>
+    ): Call<ForgotResponse>
 
     @GET("article/data")
     fun getAllArticle(): Call<ArticleResponse>
