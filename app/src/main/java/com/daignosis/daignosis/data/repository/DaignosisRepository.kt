@@ -193,4 +193,34 @@ class DaignosisRepository (
         })
         return Pair(progress,allArticle)
     }
+
+    fun getUserProfile(token: String): Pair<LiveData<Result<Boolean>>, LiveData<ProfileResponse>>{
+        val user = MutableLiveData<ProfileResponse>()
+        val progress = MutableLiveData<Result<Boolean>>()
+
+        progress.value = Result.Loading
+        val client = apiService.getProfileUser("Bearer $token")
+        client.enqueue(object: Callback<ProfileResponse> {
+            override fun onResponse(
+                call: Call<ProfileResponse>,
+                response: Response<ProfileResponse>
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if(responseBody != null){
+                        user.postValue(responseBody!!)
+                        progress.value = Result.Success(true)
+                    }else{
+                        Log.e(ContentValues.TAG, "onFailure1: ${response.message()}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                progress.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure2: ${t.message}")
+            }
+        })
+        return Pair(progress, user)
+    }
 }

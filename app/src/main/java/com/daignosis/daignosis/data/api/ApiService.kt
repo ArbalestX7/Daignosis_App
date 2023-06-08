@@ -2,10 +2,7 @@ package com.daignosis.daignosis.data.api
 
 import com.daignosis.daignosis.data.response.*
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -33,6 +30,11 @@ interface ApiService {
     @GET("article/data")
     fun getAllArticle(): Call<ArticleResponse>
 
-    @GET("article/data?limit=3")
+    @GET("article/data?limit=5")
     fun getMainArticle(): Call<ArticleResponse>
+
+    @POST("user/get-profile")
+    fun getProfileUser(
+        @Header("Authorization") token: String
+    ): Call<ProfileResponse>
 }

@@ -48,6 +48,22 @@
 
     //Profile
     <string name="profile">Profil</string>
+    <string name="email_profile">Ditoiqbalk@gmail.com</string>
+    <string name="username_profile">dito</string>
+    <string name="title_editprof"> Ubah Profil </string>
+    <string name="fullname">Nama Lengkap</string>
+    <string name="birthdate">Tanggal Lahir</string>
+    <string name="phone_num">Nomor Telepon</string>
+    <string name="address">Alamat</string>
+    <string name="city">Kabupaten/Kota</string>
+    <string name="provinsi">Provinsi</string>
+    <string name="post_code">Kode Pos</string>
+    <string name="country">Negara</string>
+    <string name="save">Simpan Perubahan</string>
+    <string name="logout">Logout</string>
+    <string name="log_desc">Apakah Anda yakin ingin keluar dari aplikasi ?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
 
     //Article
     <string name="title_topbar_listArtikel">Artikel</string>

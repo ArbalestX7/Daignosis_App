@@ -17,6 +17,7 @@ import com.daignosis.daignosis.ui.adapter.MainAdapter
 import com.daignosis.daignosis.ui.article.ArticleActivity
 import com.daignosis.daignosis.ui.article.DetailArticleActivity
 import com.daignosis.daignosis.ui.login.LoginActivity
+import com.daignosis.daignosis.ui.profile.ProfileActivity
 import com.daignosis.daignosis.utils.Result
 import com.daignosis.daignosis.utils.ViewModelFactory
 
@@ -49,9 +50,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,LoginActivity::class.java))
             finish()
         }
-        //binding.btnProfile.setOnClickListener {
-            //startActivity(Intent(this,DetailArticleActivity::class.java))
-        //}
+        binding.btnProfile.setOnClickListener {
+            startActivity(Intent(this,ProfileActivity::class.java))
+        }
         binding.btnOther.setOnClickListener {
             startActivity(Intent(this,ArticleActivity::class.java))
         }

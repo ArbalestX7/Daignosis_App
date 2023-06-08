@@ -17,6 +17,7 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
             Data(
                 pref[BIRTHDAY_KEY] ?:"",
                 pref[FULLNAME_KEY] ?:"",
+                pref[USER_ID] ?:"",
                 pref[PHOTO_KEY] ?:"",
                 pref[PHONE_KEY] ?:"",
                 pref[EMAIL_KEY] ?:"",
@@ -30,6 +31,7 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         dataStore.edit { preference ->
             preference[BIRTHDAY_KEY] = user.birthday
             preference[FULLNAME_KEY] = user.fullName
+            preference[USER_ID] = user.userId
             preference[PHOTO_KEY] = user.photoProfile
             preference[PHONE_KEY] = user.phoneNumber
             preference[EMAIL_KEY] = user.email
@@ -50,6 +52,7 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
 
         private val BIRTHDAY_KEY = stringPreferencesKey("birthday")
         private val FULLNAME_KEY = stringPreferencesKey("fullname")
+        private val USER_ID = stringPreferencesKey("userId")
         private val PHOTO_KEY = stringPreferencesKey("photo")
         private val PHONE_KEY = stringPreferencesKey("phone")
         private val EMAIL_KEY = stringPreferencesKey("email")

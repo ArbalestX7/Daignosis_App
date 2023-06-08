@@ -70,6 +70,7 @@ class RegisterActivity : AppCompatActivity() {
                         getString(R.string.snack_regis),
                         Snackbar.LENGTH_SHORT
                     ).show()
+                    resetForm()
                 }
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
@@ -80,6 +81,17 @@ class RegisterActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+        }
+    }
+    private fun resetForm() {
+        binding.apply {
+            edtRegisEmail.text = null
+            edtRegisEmail.text = null
+            edtRegisUsername.text = null
+
+            emailTextLayout.helperText = " "
+            passwordTextLayout.helperText = " "
+            usernameTextLayout.helperText = " "
         }
     }
 }

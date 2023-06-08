@@ -22,6 +22,9 @@ data class Data(
 	@field:SerializedName("full_name")
 	val fullName: String,
 
+	@field:SerializedName("user_id")
+	val userId: String,
+
 	@field:SerializedName("photo_profile")
 	val photoProfile: String,
 
