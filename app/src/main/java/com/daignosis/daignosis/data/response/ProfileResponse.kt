@@ -14,7 +14,7 @@ data class ProfileResponse(
 data class DataUser(
 
 	@field:SerializedName("birthday")
-	val birthday: Any,
+	val birthday: String,
 
 	@field:SerializedName("country")
 	val country: String,
@@ -38,7 +38,7 @@ data class DataUser(
 	val password: String,
 
 	@field:SerializedName("full_name")
-	val fullName: Any,
+	val fullName: String,
 
 	@field:SerializedName("province")
 	val province: String,
@@ -47,7 +47,7 @@ data class DataUser(
 	val userId: String,
 
 	@field:SerializedName("phone_number")
-	val phoneNumber: Any,
+	val phoneNumber: String,
 
 	@field:SerializedName("postal_code")
 	val postalCode: Int,

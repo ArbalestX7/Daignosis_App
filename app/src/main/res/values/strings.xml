@@ -64,6 +64,8 @@
     <string name="log_desc">Apakah Anda yakin ingin keluar dari aplikasi ?</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
+    <string name="edit_success">Simpan Perubahan Profil Berhasil !</string>
+    <string name="edit_fail">Gagal Menyimpan Perubahan</string>
 
     //Article
     <string name="title_topbar_listArtikel">Artikel</string>

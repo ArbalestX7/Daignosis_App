@@ -1,12 +1,10 @@
 package com.daignosis.daignosis.utils
 
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.*
 import com.daignosis.daignosis.data.entity.UserEntity
 import com.daignosis.daignosis.data.response.Data
+import com.daignosis.daignosis.data.response.DataUser
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -40,6 +38,24 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         }
     }
 
+
+    suspend fun saveUserData(data: DataUser){
+        dataStore.edit { pref ->
+            pref[USER_ID] = data.userId
+            pref[USERNAME_KEY] = data.username
+            pref[FULLNAME_KEY] = data.fullName
+            pref[PHONE_KEY] = data.phoneNumber
+            pref[EMAIL_KEY] = data.email
+            pref[BIRTHDAY_KEY] = data.birthday
+            pref[ADDRESS_KEY] = data.address
+            pref[CITY_KEY] = data.city
+            pref[PROVINCE] = data.province
+            pref[POST_CODE] = data.postalCode
+            pref[COUNTRY_KEY] = data.country
+            pref[PHOTO_KEY] = data.photoProfile
+        }
+    }
+
     suspend fun logout(){
         dataStore.edit { pref ->
             pref[TOKEN_KEY] = ""
@@ -49,15 +65,21 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
     companion object {
         @Volatile
         private var INSTANCE: UserPref? = null
+        private val TOKEN_KEY = stringPreferencesKey("token")
 
-        private val BIRTHDAY_KEY = stringPreferencesKey("birthday")
-        private val FULLNAME_KEY = stringPreferencesKey("fullname")
         private val USER_ID = stringPreferencesKey("userId")
-        private val PHOTO_KEY = stringPreferencesKey("photo")
+        private val USERNAME_KEY = stringPreferencesKey("username")
+        private val FULLNAME_KEY = stringPreferencesKey("fullname")
         private val PHONE_KEY = stringPreferencesKey("phone")
         private val EMAIL_KEY = stringPreferencesKey("email")
-        private val USERNAME_KEY = stringPreferencesKey("username")
-        private val TOKEN_KEY = stringPreferencesKey("token")
+        private val BIRTHDAY_KEY = stringPreferencesKey("birthday")
+        private val PHOTO_KEY = stringPreferencesKey("photo")
+
+        private val ADDRESS_KEY = stringPreferencesKey("address")
+        private val CITY_KEY = stringPreferencesKey("city")
+        private val PROVINCE = stringPreferencesKey("province")
+        private val POST_CODE = intPreferencesKey("postal_code")
+        private val COUNTRY_KEY = stringPreferencesKey("country")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPref {
             return INSTANCE ?: synchronized(this) {

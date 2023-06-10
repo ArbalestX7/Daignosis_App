@@ -223,4 +223,44 @@ class DaignosisRepository (
         })
         return Pair(progress, user)
     }
+
+    fun editProfileUser(
+        token: String, userId: String?, username: String?,
+        full_name: String?, phone_number: String?,email: String?,
+        birthday: String?, address: String?, city: String?,
+        province: String?, postal_code: Int, country: String?
+    ): LiveData<Result<Boolean>> {
+        val edit = MutableLiveData<Result<Boolean>>()
+        edit.value = Result.Loading
+
+        val client = apiService.editProfileUser(
+                "Bearer $token",userId,username,
+                full_name,phone_number, email, birthday,
+                address, city, province, postal_code, country
+            )
+        client.enqueue(object : Callback<EditProfileResponse>{
+            override fun onResponse(
+                call: Call<EditProfileResponse>,
+                response: Response<EditProfileResponse>,
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null && !responseBody.error) {
+                        edit.value = Result.Success(true)
+                    } else {
+                        edit.value = Result.Error("Error Response")
+                        Log.d(ContentValues.TAG, "onResponse: Error ${response.message()}")
+                    }
+                } else {
+                    edit.value = Result.Error("Error")
+                }
+            }
+
+            override fun onFailure(call: Call<EditProfileResponse>, t: Throwable) {
+                edit.value = Result.Error("onFailure")
+                Log.d(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+        })
+        return edit
+    }
 }
