@@ -156,8 +156,12 @@ class ProfileActivity : AppCompatActivity() {
 
                     binding.btnSaveprofile.setOnClickListener {
                         editProfile(
-                            user.token,user.userId,username, full_name, phone_number,
-                            email, birthday, address, city, province, postal_code, country
+                            user.token,user.userId,username, edtProfileFullname.text.toString(),
+                            edtProfilePhonenum.text.toString(), email,
+                            edtProfileBirthdate.text.toString(), edtProfileAddress.text.toString(),
+                            edtProfileCity.text.toString(), edtProfileProvince.text.toString(),
+                            edtProfilePostcode.text.toString().toInt(),
+                            edtProfileCountry.text.toString()
                         )
                     }
                 }
