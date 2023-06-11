@@ -9,6 +9,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.R
+import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityForgotPwBinding
 import com.daignosis.daignosis.ui.login.LoginActivity
 import com.daignosis.daignosis.ui.register.RegisterViewModel
@@ -25,6 +26,8 @@ class ForgotPwActivity : AppCompatActivity() {
         binding = ActivityForgotPwBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupView()
+        SocketHandler.closeConnection()
+
         forgotViewModel = ViewModelProvider(
             this,
             ViewModelFactory(this)

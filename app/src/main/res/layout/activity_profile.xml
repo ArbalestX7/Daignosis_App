@@ -103,7 +103,7 @@
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginTop="13dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/ic_logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -139,6 +139,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_profile"
+                android:enabled="false"
+                android:textColor="@color/color_selector"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,9 +176,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_profile"
                 android:drawableEnd="@drawable/ic_calendar"
-                android:enabled="true"
                 android:focusable="false"
-                android:focusableInTouchMode="false"/>
+                android:focusableInTouchMode="false"
+                android:enabled="false"
+                android:textColor="@color/color_selector"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -210,7 +213,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_profile"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:enabled="false"
+                android:textColor="@color/color_selector" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -244,6 +249,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_profile"
+                android:enabled="false"
+                android:textColor="@color/color_selector"
                 android:inputType="textMultiLine"
                 android:maxHeight="80dp"
                 android:maxLines="4" />
@@ -279,6 +286,8 @@
                 android:id="@+id/edt_profile_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/color_selector"
                 android:background="@drawable/shape_profile" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -312,6 +321,8 @@
                 android:id="@+id/edt_profile_province"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/color_selector"
                 android:background="@drawable/shape_profile" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -346,6 +357,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_profile"
+                android:enabled="false"
+                android:textColor="@color/color_selector"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -379,6 +392,8 @@
                 android:id="@+id/edt_profile_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/color_selector"
                 android:background="@drawable/shape_profile" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -424,6 +439,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/postcode_textLayout"
             tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_edit"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_edit"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_edit_off"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_edit_off"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView11" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

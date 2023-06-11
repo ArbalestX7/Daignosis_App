@@ -14,11 +14,7 @@ object Util {
         val date = format.parse(this) as Date
         return DateFormat.getDateInstance(DateFormat.FULL, Locale.getDefault()).format(date)
     }
-    fun String.withDateFormatProfile(): String {
-        val format = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-        val date = format.parse(this) as Date
-        return DateFormat.getDateInstance(DateFormat.FULL).format(date)
-    }
+
 
     fun View.visible() {
         this.visibility = View.VISIBLE

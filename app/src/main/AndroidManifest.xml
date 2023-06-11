@@ -11,6 +11,7 @@
         android:icon="@mipmap/ic_diagnosis_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.DaignosisApp"
         tools:targetApi="31">
         <activity

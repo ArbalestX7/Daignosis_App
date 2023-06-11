@@ -45,6 +45,7 @@
     //Konsul page
     <string name="chat_example">Hai, Zeta! Perkenalkan saya Daignosis yang akan membantu diagnosis penyakit Anda. Keluhan apa yang Anda rasakan?</string>
     <string name="chat_box_hint">Ketik Keluhan Anda</string>
+    <string name="consult">Konsultasi</string>
 
     //Profile
     <string name="profile">Profil</string>

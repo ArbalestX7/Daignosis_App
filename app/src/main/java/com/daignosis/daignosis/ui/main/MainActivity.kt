@@ -11,11 +11,13 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daignosis.daignosis.data.response.DataItem
+import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityMainBinding
 import com.daignosis.daignosis.ui.adapter.ArticleAdapter
 import com.daignosis.daignosis.ui.adapter.MainAdapter
 import com.daignosis.daignosis.ui.article.ArticleActivity
 import com.daignosis.daignosis.ui.article.DetailArticleActivity
+import com.daignosis.daignosis.ui.consultation.ConsultActivity
 import com.daignosis.daignosis.ui.login.LoginActivity
 import com.daignosis.daignosis.ui.profile.ProfileActivity
 import com.daignosis.daignosis.utils.Result
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             this, ViewModelFactory(this)
         )[MainViewModel::class.java]
         checkToken()
+        SocketHandler.closeConnection()
 
         mainViewModel.getArticle().second.observe(this){
             setRecycler(it)
@@ -55,6 +58,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnOther.setOnClickListener {
             startActivity(Intent(this,ArticleActivity::class.java))
+        }
+        binding.btnConsult.setOnClickListener {
+            startActivity(Intent(this,ConsultActivity::class.java))
         }
     }
 

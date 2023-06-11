@@ -10,6 +10,7 @@ import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.lifecycle.ViewModelProvider
+import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivitySplashBinding
 import com.daignosis.daignosis.ui.login.LoginActivity
 import com.daignosis.daignosis.ui.main.MainActivity
@@ -27,6 +28,7 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupView()
+        SocketHandler.closeConnection()
 
         handler = Handler()
         handler.postDelayed({

@@ -9,6 +9,7 @@ import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.daignosis.daignosis.R
 import com.daignosis.daignosis.data.response.DataItem
+import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityDetailArticleBinding
 import com.daignosis.daignosis.utils.Util.withDateFormat
 
@@ -20,6 +21,8 @@ class DetailArticleActivity : AppCompatActivity() {
         binding = ActivityDetailArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        SocketHandler.closeConnection()
+
         setDetail()
 
         binding.btnBackArticleDetail.setOnClickListener {

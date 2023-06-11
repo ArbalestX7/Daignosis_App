@@ -20,6 +20,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.R
 import com.daignosis.daignosis.data.model.LoginModel
+import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityLoginBinding
 import com.daignosis.daignosis.ui.forgotpw.ForgotPwActivity
 import com.daignosis.daignosis.ui.main.MainActivity
@@ -40,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupView()
+        SocketHandler.closeConnection()
 
         loginViewModel = ViewModelProvider(
             this,

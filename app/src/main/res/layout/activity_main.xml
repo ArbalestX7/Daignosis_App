@@ -72,7 +72,7 @@
         app:srcCompat="@drawable/logo_daig_font" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btn_consult"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginStart="24dp"
@@ -103,7 +103,7 @@
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_consult" />
 
     <Button
         android:id="@+id/btn_other"
@@ -116,7 +116,7 @@
         android:text="@string/other"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_consult" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_artikelmain"

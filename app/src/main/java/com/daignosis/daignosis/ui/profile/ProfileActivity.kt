@@ -2,24 +2,22 @@ package com.daignosis.daignosis.ui.profile
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.daignosis.daignosis.utils.Util.withDateFormat
 import com.daignosis.daignosis.R
+import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityProfileBinding
 import com.daignosis.daignosis.ui.login.LoginActivity
 import com.daignosis.daignosis.utils.Result
-import com.daignosis.daignosis.utils.Util.withDateFormatProfile
 import com.daignosis.daignosis.utils.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -46,6 +44,7 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        SocketHandler.closeConnection()
 
         viewModel = ViewModelProvider(
             this, ViewModelFactory(this)
@@ -56,6 +55,12 @@ class ProfileActivity : AppCompatActivity() {
         editTextBirthdate = binding.edtProfileBirthdate
         editTextBirthdate.setOnClickListener{
             showDatePickerDialog()
+        }
+        binding.btnEdit.setOnClickListener {
+            onClickEdit()
+        }
+        binding.btnEditOff.setOnClickListener {
+            onClickEditOff()
         }
         binding.btnBackProfile.setOnClickListener { onBackPressed() }
         binding.btnLogout.setOnClickListener { logout() }
@@ -186,6 +191,7 @@ class ProfileActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         binding.progressBar5.visibility = View.GONE
+                        onClickEditOff()
                         Snackbar.make(
                             window.decorView.rootView,
                             getString(R.string.edit_success),
@@ -202,6 +208,36 @@ class ProfileActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+    private fun onClickEdit(){
+        binding.apply {
+            btnEdit.visibility = View.GONE
+            btnEditOff.visibility = View.VISIBLE
+
+            edtProfileFullname.isEnabled = true
+            edtProfileBirthdate.isEnabled = true
+            edtProfilePhonenum.isEnabled = true
+            edtProfileAddress.isEnabled = true
+            edtProfileCity.isEnabled = true
+            edtProfileProvince.isEnabled = true
+            edtProfilePostcode.isEnabled = true
+            edtProfileCountry.isEnabled = true
+        }
+    }
+    private fun onClickEditOff(){
+        binding.apply {
+            btnEdit.visibility = View.VISIBLE
+            btnEditOff.visibility = View.GONE
+
+            edtProfileFullname.isEnabled = false
+            edtProfileBirthdate.isEnabled = false
+            edtProfilePhonenum.isEnabled = false
+            edtProfileAddress.isEnabled = false
+            edtProfileCity.isEnabled = false
+            edtProfileProvince.isEnabled = false
+            edtProfilePostcode.isEnabled = false
+            edtProfileCountry.isEnabled = false
         }
     }
 }
