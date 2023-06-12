@@ -6,15 +6,17 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.daignosis.daignosis.data.response.Data
+import com.daignosis.daignosis.data.response.DataLogin
+import com.daignosis.daignosis.data.response.DataSession
 import com.daignosis.daignosis.data.response.DataUser
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class UserPref private constructor(private val dataStore: DataStore<Preferences>) {
 
-    fun getToken(): Flow<Data> {
+    fun getToken(): Flow<DataLogin> {
         return dataStore.data.map { pref ->
-            Data(
+            DataLogin(
                 pref[BIRTHDAY_KEY] ?:"",
                 pref[FULLNAME_KEY] ?:"",
                 pref[USER_ID] ?:"",
@@ -27,7 +29,7 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         }
     }
 
-    suspend fun saveTokenUser(user: Data){
+    suspend fun saveTokenUser(user: DataLogin){
         dataStore.edit { preference ->
             preference[BIRTHDAY_KEY] = user.birthday
             preference[FULLNAME_KEY] = user.fullName
@@ -40,21 +42,17 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         }
     }
 
-
-    suspend fun saveUserData(data: DataUser){
+    suspend fun saveSessionId(session: DataSession){
         dataStore.edit { pref ->
-            pref[USER_ID] = data.userId
-            pref[USERNAME_KEY] = data.username
-            pref[FULLNAME_KEY] = data.fullName
-            pref[PHONE_KEY] = data.phoneNumber
-            pref[EMAIL_KEY] = data.email
-            pref[BIRTHDAY_KEY] = data.birthday
-            pref[ADDRESS_KEY] = data.address
-            pref[CITY_KEY] = data.city
-            pref[PROVINCE] = data.province
-            pref[POST_CODE] = data.postalCode
-            pref[COUNTRY_KEY] = data.country
-            pref[PHOTO_KEY] = data.photoProfile
+            pref[SESSION_ID] = session.sessionId
+        }
+    }
+
+    fun getSessionId():Flow<DataSession>{
+        return dataStore.data.map { pref ->
+            DataSession(
+                pref[SESSION_ID] ?:""
+            )
         }
     }
 
@@ -77,11 +75,8 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         private val BIRTHDAY_KEY = stringPreferencesKey("birthday")
         private val PHOTO_KEY = stringPreferencesKey("photo")
 
-        private val ADDRESS_KEY = stringPreferencesKey("address")
-        private val CITY_KEY = stringPreferencesKey("city")
-        private val PROVINCE = stringPreferencesKey("province")
-        private val POST_CODE = intPreferencesKey("postal_code")
-        private val COUNTRY_KEY = stringPreferencesKey("country")
+        private val SESSION_ID = stringPreferencesKey("sessionId")
+
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPref {
             return INSTANCE ?: synchronized(this) {

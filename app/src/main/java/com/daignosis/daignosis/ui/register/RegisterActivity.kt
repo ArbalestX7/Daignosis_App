@@ -9,10 +9,8 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.R
-import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityRegisterBinding
 import com.daignosis.daignosis.ui.login.LoginActivity
-import com.daignosis.daignosis.ui.main.MainActivity
 import com.daignosis.daignosis.utils.Result
 import com.daignosis.daignosis.utils.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
@@ -26,7 +24,6 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupView()
-        SocketHandler.closeConnection()
 
         registerViewModel = ViewModelProvider(
             this,

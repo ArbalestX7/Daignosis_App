@@ -10,6 +10,7 @@
     <string name="logo_daig">Daignosis Logo</string>
     <string name="article_photo">Foto Artikel</string>
     <string name="photo_profile">Foto Profil</string>
+    <string name="fab_add">Tombol mengambang tambah sesi baru</string>
 
     //Loginpage
     <string name="snack_login">Login Berhasil !</string>
@@ -46,6 +47,10 @@
     <string name="chat_example">Hai, Zeta! Perkenalkan saya Daignosis yang akan membantu diagnosis penyakit Anda. Keluhan apa yang Anda rasakan?</string>
     <string name="chat_box_hint">Ketik Keluhan Anda</string>
     <string name="consult">Konsultasi</string>
+    <string name="history">Riwayat</string>
+    <string name="session_id">324de955–56d0–40ae-abce-7b3f59bd5d8d</string>
+    <string name="fail_session">Gagal Membuat Sesi Baru</string>
+    <string name="fail_sendMsg">Gagal Mengirim Pesan </string>
 
     //Profile
     <string name="profile">Profil</string>
@@ -67,6 +72,7 @@
     <string name="no">Tidak</string>
     <string name="edit_success">Simpan Perubahan Profil Berhasil !</string>
     <string name="edit_fail">Gagal Menyimpan Perubahan</string>
+    <string name="getProfile_fail">Gagal mendapatkan data Profile!</string>
 
     //Article
     <string name="title_topbar_listArtikel">Artikel</string>

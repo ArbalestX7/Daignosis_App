@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.di.Injection
 import com.daignosis.daignosis.ui.article.ArticleViewModel
+import com.daignosis.daignosis.ui.consultation.ConsultViewModel
+import com.daignosis.daignosis.ui.consultation.HistoryViewModel
 import com.daignosis.daignosis.ui.forgotpw.ForgotViewModel
 import com.daignosis.daignosis.ui.login.LoginViewModel
 import com.daignosis.daignosis.ui.main.MainViewModel
@@ -32,6 +34,12 @@ class ViewModelFactory (private val context: Context) : ViewModelProvider.NewIns
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(Injection.provideRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
+                HistoryViewModel(Injection.provideRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(ConsultViewModel::class.java) -> {
+                ConsultViewModel(Injection.provideRepository(context)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

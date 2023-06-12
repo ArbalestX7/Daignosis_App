@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.daignosis.daignosis.R
-import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityProfileBinding
 import com.daignosis.daignosis.ui.login.LoginActivity
 import com.daignosis.daignosis.utils.Result
@@ -44,7 +43,6 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-        SocketHandler.closeConnection()
 
         viewModel = ViewModelProvider(
             this, ViewModelFactory(this)
@@ -122,7 +120,7 @@ class ProfileActivity : AppCompatActivity() {
                         binding.progressBar4.visibility = View.GONE
                     }
                     is Result.Error -> {
-                        Toast.makeText(this, it.error, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, R.string.getProfile_fail, Toast.LENGTH_SHORT).show()
                         binding.progressBar4.visibility = View.GONE
                     }
                 }

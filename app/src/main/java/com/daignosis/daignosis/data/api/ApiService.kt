@@ -27,10 +27,10 @@ interface ApiService {
         @Field("username") username: String
     ): Call<ForgotResponse>
 
-    @GET("article/data")
+    @GET("article/data?limit=50")
     fun getAllArticle(): Call<ArticleResponse>
 
-    @GET("article/data?limit=5")
+    @GET("article/data?limit=3")
     fun getMainArticle(): Call<ArticleResponse>
 
     @POST("user/get-profile")
@@ -55,4 +55,17 @@ interface ApiService {
         @Field("postal_code") postal_code: Int?,
         @Field("country") country: String?
     ): Call<EditProfileResponse>
+
+    @POST("sessions/new")
+    fun newSessions(
+        @Header("Authorization") token: String
+    ): Call<NewSessionResponse>
+
+    @FormUrlEncoded
+    @POST("messages")
+    fun message(
+        @Header("Authorization") token: String,
+        @Field("message") message: String,
+        @Field("session_id") sessionId: String
+    ): Call<MessageResponse>
 }

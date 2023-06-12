@@ -23,7 +23,10 @@ class DaignosisRepository (
     private val pref: UserPref
 ){
 
-    fun getToken(): LiveData<Data>{
+    fun getSession(): LiveData<DataSession>{
+        return pref.getSessionId().asLiveData()
+    }
+    fun getToken(): LiveData<DataLogin>{
         return pref.getToken().asLiveData()
     }
 
@@ -47,7 +50,7 @@ class DaignosisRepository (
                     val responseBody = response.body()
                     if (responseBody != null && !responseBody.error){
                         login.value = Result.Success(true)
-                        MainScope().launch { pref.saveTokenUser(responseBody.data) }
+                        MainScope().launch { pref.saveTokenUser(responseBody.dataLogin) }
                     } else {
                         login.value = Result.Error("Error")
                         Log.e(ContentValues.TAG, "onResponse(E): ${response.message()}" )
@@ -207,10 +210,11 @@ class DaignosisRepository (
             ) {
                 if (response.isSuccessful){
                     val responseBody = response.body()
-                    if(responseBody != null){
+                    if(responseBody != null && !responseBody.error){
                         user.postValue(responseBody!!)
                         progress.value = Result.Success(true)
                     }else{
+                        progress.value = Result.Error("Error: Fail")
                         Log.e(ContentValues.TAG, "onFailure1: ${response.message()}")
                     }
                 }
@@ -262,5 +266,64 @@ class DaignosisRepository (
             }
         })
         return edit
+    }
+
+    fun newSession(token: String): LiveData<Result<Boolean>> {
+        val session = MutableLiveData<Result<Boolean>>()
+        session.value = Result.Loading
+
+        val client = apiService.newSessions("Bearer $token")
+        client.enqueue(object : Callback<NewSessionResponse>{
+            override fun onResponse(
+                call: Call<NewSessionResponse>,
+                response: Response<NewSessionResponse>,
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if (responseBody != null && !responseBody.error){
+                        session.value = Result.Success(true)
+                        MainScope().launch { pref.saveSessionId(responseBody.dataSession)}
+                    } else {
+                        session.value = Result.Error("Error")
+                        Log.e(ContentValues.TAG, "onResponse: Error ${response.message()}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<NewSessionResponse>, t: Throwable) {
+                session.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+        })
+        return session
+    }
+
+    fun message(token: String, message: String, sessionId: String): LiveData<Result<Boolean>>{
+        val msg = MutableLiveData<Result<Boolean>>()
+        msg.value = Result.Loading
+
+        val client = apiService.message("Bearer $token",message, sessionId)
+        client.enqueue(object : Callback<MessageResponse>{
+            override fun onResponse(
+                call: Call<MessageResponse>,
+                response: Response<MessageResponse>,
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if (responseBody != null && !responseBody.error){
+                        msg.value = Result.Success(true)
+                    } else {
+                        msg.value = Result.Error("Error")
+                        Log.e(ContentValues.TAG, "onResponse: Error ${response.message()}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                msg.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+        })
+        return msg
     }
 }

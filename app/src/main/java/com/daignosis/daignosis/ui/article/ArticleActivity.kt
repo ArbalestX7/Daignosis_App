@@ -1,6 +1,5 @@
 package com.daignosis.daignosis.ui.article
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,10 +8,8 @@ import com.daignosis.daignosis.utils.Result
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daignosis.daignosis.data.response.DataItem
-import com.daignosis.daignosis.data.socket.SocketHandler
 import com.daignosis.daignosis.databinding.ActivityArticleBinding
 import com.daignosis.daignosis.ui.adapter.ArticleAdapter
-import com.daignosis.daignosis.ui.main.MainActivity
 import com.daignosis.daignosis.utils.ViewModelFactory
 
 @Suppress("DEPRECATION")
@@ -25,7 +22,6 @@ class ArticleActivity : AppCompatActivity() {
         binding = ActivityArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-        SocketHandler.closeConnection()
 
         articleViewModel = ViewModelProvider(
             this,
