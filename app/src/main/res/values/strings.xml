@@ -47,10 +47,12 @@
     <string name="chat_example">Hai, Zeta! Perkenalkan saya Daignosis yang akan membantu diagnosis penyakit Anda. Keluhan apa yang Anda rasakan?</string>
     <string name="chat_box_hint">Ketik Keluhan Anda</string>
     <string name="consult">Konsultasi</string>
-    <string name="history">Riwayat</string>
+    <string name="history">Riwayat Konsultasi</string>
     <string name="session_id">324de955–56d0–40ae-abce-7b3f59bd5d8d</string>
     <string name="fail_session">Gagal Membuat Sesi Baru</string>
     <string name="fail_sendMsg">Gagal Mengirim Pesan </string>
+    <string name="must_login">Silahkan login terlebih dahulu</string>
+    <string name="fail_history">Gagal Mendapatkan Histori Konsultasi</string>
 
     //Profile
     <string name="profile">Profil</string>

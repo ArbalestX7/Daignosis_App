@@ -6,8 +6,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.daignosis.daignosis.R
+import com.daignosis.daignosis.data.response.Data
+import com.daignosis.daignosis.data.response.DataItem
 import com.daignosis.daignosis.databinding.ActivityConsultBinding
+import com.daignosis.daignosis.ui.adapter.ArticleAdapter
+import com.daignosis.daignosis.ui.adapter.ChatAdapter
 import com.daignosis.daignosis.utils.Result
 import com.daignosis.daignosis.utils.ViewModelFactory
 
@@ -30,6 +35,8 @@ class ConsultActivity : AppCompatActivity() {
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+        viewModel.rmvSession()
+        finish()
         return false
     }
 
@@ -38,7 +45,7 @@ class ConsultActivity : AppCompatActivity() {
         viewModel.getToken().observe(this){
             val token = it.token
             viewModel.getSession().observe(this){
-                viewModel.sendMsg(token, userMsg, it.sessionId).observe(this){
+                viewModel.sendMsg(token, userMsg, it.sessionId).first.observe(this){
                     when(it) {
                         is Result.Loading -> {}
                         is Result.Success -> {
@@ -51,7 +58,16 @@ class ConsultActivity : AppCompatActivity() {
                         }
                     }
                 }
+                viewModel.sendMsg(token,userMsg,it.sessionId).second.observe(this){
+                    setRecycler(it)
+                }
             }
+        }
+    }
+    private fun setRecycler(msg: List<Data>){
+        binding.messageRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@ConsultActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = ChatAdapter(msg)
         }
     }
 }

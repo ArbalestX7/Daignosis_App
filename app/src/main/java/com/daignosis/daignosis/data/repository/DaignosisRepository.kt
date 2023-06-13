@@ -36,6 +36,12 @@ class DaignosisRepository (
         }
     }
 
+    fun rmvSession(){
+        MainScope().launch {
+            pref.rmvSessionId()
+        }
+    }
+
     fun login (email: String, password: String): LiveData<Result<Boolean>> {
         val login = MutableLiveData<Result<Boolean>>()
         login.value = Result.Loading
@@ -298,10 +304,13 @@ class DaignosisRepository (
         return session
     }
 
-    fun message(token: String, message: String, sessionId: String): LiveData<Result<Boolean>>{
+    fun message(
+        token: String, message: String, sessionId: String
+    ): Pair<LiveData<Result<Boolean>>, LiveData<List<Data>>>{
         val msg = MutableLiveData<Result<Boolean>>()
-        msg.value = Result.Loading
+        val data = MutableLiveData<List<Data>>()
 
+        msg.value = Result.Loading
         val client = apiService.message("Bearer $token",message, sessionId)
         client.enqueue(object : Callback<MessageResponse>{
             override fun onResponse(
@@ -311,6 +320,7 @@ class DaignosisRepository (
                 if (response.isSuccessful){
                     val responseBody = response.body()
                     if (responseBody != null && !responseBody.error){
+                        data.value = listOf(responseBody.data)
                         msg.value = Result.Success(true)
                     } else {
                         msg.value = Result.Error("Error")
@@ -324,6 +334,39 @@ class DaignosisRepository (
                 Log.e(ContentValues.TAG, "onFailure: ${t.message}")
             }
         })
-        return msg
+        return Pair(msg,data)
+    }
+
+    fun historySession(
+        token: String
+    ): Pair<LiveData<Result<Boolean>>, LiveData<List<DataHistory>>>{
+        val history = MutableLiveData<Result<Boolean>>()
+        val data = MutableLiveData<List<DataHistory>>()
+
+        history.value = Result.Loading
+        val client = apiService.sessionHistory("Bearer $token")
+        client.enqueue(object : Callback<HistoryResponse>{
+            override fun onResponse(
+                call: Call<HistoryResponse>,
+                response: Response<HistoryResponse>,
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if (responseBody != null){
+                        data.value = responseBody.dataHistory
+                        history.value = Result.Success(true)
+                    } else {
+                        history.value = Result.Error("Error")
+                        Log.e(ContentValues.TAG, "onResponse: Error ${response.message()}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<HistoryResponse>, t: Throwable) {
+                history.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+        })
+        return Pair(history,data)
     }
 }

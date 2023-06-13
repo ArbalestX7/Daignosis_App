@@ -23,17 +23,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_message_gray"
         android:maxWidth="250dp"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivMessenger"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/chat_example" />
+
+    <TextView
+        android:id="@+id/tv_date_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tvMessage"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessage"
+        tools:text="@string/date_article" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

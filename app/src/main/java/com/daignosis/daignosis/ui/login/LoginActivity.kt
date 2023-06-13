@@ -22,6 +22,7 @@ import com.daignosis.daignosis.ui.main.MainActivity
 import com.daignosis.daignosis.ui.register.RegisterActivity
 import com.daignosis.daignosis.utils.ViewModelFactory
 import com.daignosis.daignosis.utils.Result
+import com.daignosis.daignosis.utils.Util.isValidEmail
 import com.google.android.material.snackbar.Snackbar
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "pref")
@@ -101,27 +102,22 @@ class LoginActivity : AppCompatActivity() {
         return null
     }
 
-    private fun checkIfEmailIsValid(): String? {
-        val emailInputText = binding.edtLoginEmail.text.toString()
-        binding.edtLoginEmail.doOnTextChanged { text, start, before, count ->
-            if(!Patterns.EMAIL_ADDRESS.matcher(emailInputText).matches()){
-                binding.edtLoginEmail.error = "Invalid Email Address"
-            }
-            else{
-                binding.edtLoginEmail.error = null
-            }
+    private fun validEmail(): String? {
+        val email = binding.edtLoginEmail.text.toString()
+        if (!email.isValidEmail()){
+            return "Format Email Tidak Valid"
         }
         return null
     }
 
     private fun login() {
-        binding.emailTextLayout.helperText = checkIfEmailIsValid()
+        binding.emailTextLayout.helperText = validEmail()
         binding.passwordTextLayout.helperText = validPassword()
 
-        val checkIfEmailIsValid = binding.emailTextLayout.helperText == null
+        val validEmail = binding.emailTextLayout.helperText == null
         val validPassword = binding.passwordTextLayout.helperText == null
 
-        if (checkIfEmailIsValid && validPassword) {
+        if (validEmail && validPassword) {
             binding.progressBar.visibility = View.VISIBLE
             signupAuth()
             resetForm()

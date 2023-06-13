@@ -16,23 +16,36 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="4dp">
 
         <TextView
             android:id="@+id/tv_session_id"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:ellipsize="start"
             android:fontFamily="@font/inter_semibold"
             android:maxLines="2"
             android:textColor="@android:color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:text="@string/session_id" />
+
+        <TextView
+            android:id="@+id/tv_msg_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/inter_regular"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_session_id"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_session_id"
+            tools:text="@string/date_article" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="32dp"

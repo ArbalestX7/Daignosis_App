@@ -56,6 +56,12 @@ class UserPref private constructor(private val dataStore: DataStore<Preferences>
         }
     }
 
+    suspend fun rmvSessionId(){
+        dataStore.edit {
+            it[SESSION_ID] = ""
+        }
+    }
+
     suspend fun logout(){
         dataStore.edit { pref ->
             pref[TOKEN_KEY] = ""

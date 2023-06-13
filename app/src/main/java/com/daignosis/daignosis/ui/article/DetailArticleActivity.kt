@@ -34,7 +34,7 @@ class DetailArticleActivity : AppCompatActivity() {
                 .placeholder(R.drawable.holder)
                 .into(imgDetailArticle)
 
-            tvDetailTitle.text = detailArticle?.articlePost
+            tvDetailTitle.text = detailArticle?.articleName
             tvDetailDate.text = detailArticle?.creationDate?.withDateFormat()
             tvDetailDesc.text = detailArticle?.articlePost
         }

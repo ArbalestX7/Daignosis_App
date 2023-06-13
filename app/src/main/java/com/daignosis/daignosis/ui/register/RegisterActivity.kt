@@ -4,14 +4,18 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.R
 import com.daignosis.daignosis.databinding.ActivityRegisterBinding
 import com.daignosis.daignosis.ui.login.LoginActivity
 import com.daignosis.daignosis.utils.Result
+import com.daignosis.daignosis.utils.Util.isValidEmail
 import com.daignosis.daignosis.utils.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
@@ -31,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         )[RegisterViewModel::class.java]
 
         binding.btnRegispage.setOnClickListener {
-            regisAuth()
+            regis()
         }
 
         binding.btnBack.setOnClickListener {
@@ -70,7 +74,6 @@ class RegisterActivity : AppCompatActivity() {
                         getString(R.string.snack_regis),
                         Snackbar.LENGTH_SHORT
                     ).show()
-                    resetForm()
                 }
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
@@ -86,12 +89,41 @@ class RegisterActivity : AppCompatActivity() {
     private fun resetForm() {
         binding.apply {
             edtRegisEmail.text = null
-            edtRegisEmail.text = null
+            edtRegisPw.text = null
             edtRegisUsername.text = null
 
             emailTextLayout.helperText = " "
             passwordTextLayout.helperText = " "
             usernameTextLayout.helperText = " "
         }
+    }
+    private fun validPassword(): String? {
+        val passwordText = binding.edtRegisPw.text.toString()
+        if (passwordText.length < 8) {
+            return "Minimum 8 Karakter Password"
+        }
+        return null
+    }
+    private fun validEmail(): String? {
+        val email = binding.edtRegisEmail.text.toString()
+        if (!email.isValidEmail()){
+            return "Format Email Tidak Valid"
+        }
+        return null
+    }
+    private fun regis() {
+        binding.emailTextLayout.helperText = validEmail()
+        binding.passwordTextLayout.helperText = validPassword()
+
+        val validEmail = binding.emailTextLayout.helperText == null
+        val validPassword = binding.passwordTextLayout.helperText == null
+
+        if (validEmail && validPassword) {
+            binding.progressBar.visibility = View.VISIBLE
+            regisAuth()
+            resetForm()
+        }
+        else
+            Toast.makeText(this, "Invalid Form", Toast.LENGTH_SHORT).show()
     }
 }

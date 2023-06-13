@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
             this, ViewModelFactory(this)
         )[MainViewModel::class.java]
         checkToken()
+        mainViewModel.rmvSession()
+
 
         mainViewModel.getArticle().second.observe(this){
             setRecycler(it)

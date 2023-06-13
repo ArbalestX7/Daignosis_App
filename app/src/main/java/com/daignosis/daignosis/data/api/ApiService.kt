@@ -61,6 +61,11 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<NewSessionResponse>
 
+    @POST("sessions")
+    fun sessionHistory(
+    @Header("Authorization") token: String
+    ): Call<HistoryResponse>
+
     @FormUrlEncoded
     @POST("messages")
     fun message(

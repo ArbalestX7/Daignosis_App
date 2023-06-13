@@ -7,4 +7,6 @@ class HistoryViewModel (private val repository: DaignosisRepository): ViewModel(
 
     fun getToken() = repository.getToken()
     fun newSession(token:String) = repository.newSession(token)
+
+    fun history(token: String) = repository.historySession(token)
 }
