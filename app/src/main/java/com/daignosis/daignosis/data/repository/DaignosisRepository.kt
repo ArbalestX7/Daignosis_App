@@ -5,10 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
 import com.daignosis.daignosis.data.api.ApiService
-import com.daignosis.daignosis.data.model.LoginModel
-import com.daignosis.daignosis.data.model.RegisterModel
 import com.daignosis.daignosis.data.response.*
 import com.daignosis.daignosis.utils.UserPref
 import com.daignosis.daignosis.utils.Result

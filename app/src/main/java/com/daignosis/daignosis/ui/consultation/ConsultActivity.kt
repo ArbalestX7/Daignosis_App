@@ -30,6 +30,7 @@ class ConsultActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this, ViewModelFactory(this)
         )[ConsultViewModel::class.java]
+        viewModel.getSession()
 
         binding.sendButton.setOnClickListener { sendMessage() }
     }
@@ -41,18 +42,22 @@ class ConsultActivity : AppCompatActivity() {
     }
 
     private fun sendMessage(){
-        val userMsg = binding.messageEditText.toString()
+        val userMsg = binding.messageEditText.text.toString()
         viewModel.getToken().observe(this){
             val token = it.token
             viewModel.getSession().observe(this){
                 viewModel.sendMsg(token, userMsg, it.sessionId).first.observe(this){
                     when(it) {
-                        is Result.Loading -> {}
+                        is Result.Loading -> {
+                            binding.progressBar8.visibility = View.VISIBLE
+                        }
                         is Result.Success -> {
                             binding.messageEditText.setText("")
+                            binding.progressBar8.visibility = View.GONE
                         }
                         is Result.Error -> {
-                            Toast.makeText(
+                            binding.progressBar8.visibility = View.GONE
+                                Toast.makeText(
                                 this, R.string.fail_sendMsg, Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -69,5 +74,8 @@ class ConsultActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@ConsultActivity, LinearLayoutManager.VERTICAL, false)
             adapter = ChatAdapter(msg)
         }
+    }
+    companion object {
+        const val EXTRA_SESSION = "extra_session"
     }
 }

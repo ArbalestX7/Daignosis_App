@@ -1,6 +1,8 @@
 package com.daignosis.daignosis.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class HistoryResponse(
 
@@ -11,6 +13,7 @@ data class HistoryResponse(
 	val error: Boolean
 )
 
+@Parcelize
 data class DataHistory(
 
 	@field:SerializedName("session_id")
@@ -24,4 +27,4 @@ data class DataHistory(
 
 	@field:SerializedName("is_bot")
 	val isBot: Int
-)
+): Parcelable

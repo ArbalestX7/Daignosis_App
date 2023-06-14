@@ -67,33 +67,6 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    /*private fun playAnimation() {
-        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -15f, 15f).apply {
-            duration = 2000
-            repeatCount = ObjectAnimator.RESTART
-            repeatMode = ObjectAnimator.REVERSE
-        }.start()
-
-
-        val email = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(500)
-        val emailEd =
-            ObjectAnimator.ofFloat(binding.edLoginEmailLayout, View.ALPHA, 1f).setDuration(500)
-        val pw = ObjectAnimator.ofFloat(binding.passwordTextView, View.ALPHA, 1f).setDuration(500)
-        val pwEd =
-            ObjectAnimator.ofFloat(binding.edLoginPasswordLayout, View.ALPHA, 1f).setDuration(500)
-        val signin = ObjectAnimator.ofFloat(binding.signinButton, View.ALPHA, 1f).setDuration(500)
-
-
-        val together = AnimatorSet().apply {
-            playTogether(email, pw, emailEd, pwEd)
-        }
-
-        AnimatorSet().apply {
-            playSequentially(signin, together)
-            start()
-        }
-    }*/
-
     private fun validPassword(): String? {
         val passwordText = binding.edtLoginPw.text.toString()
         if (passwordText.length < 8) {

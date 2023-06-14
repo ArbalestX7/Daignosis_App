@@ -1,11 +1,14 @@
 package com.daignosis.daignosis.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.daignosis.daignosis.data.response.DataHistory
 import com.daignosis.daignosis.databinding.ItemHistoryBinding
 import com.daignosis.daignosis.databinding.ItemMessageBinding
+import com.daignosis.daignosis.ui.article.DetailArticleActivity
+import com.daignosis.daignosis.ui.consultation.ConsultActivity
 import com.daignosis.daignosis.utils.Util.withDateFormat
 
 class HistoryAdapter (
@@ -30,6 +33,11 @@ class HistoryAdapter (
         holder.binding.apply {
             tvSessionId.text = allMessage.sessionId
             tvMsgDate.text = allMessage.latestChatDate.withDateFormat()
+        }
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView.context, ConsultActivity::class.java)
+            intent.putExtra(ConsultActivity.EXTRA_SESSION, allMessage)
+            holder.itemView.context.startActivity(intent)
         }
     }
 }
