@@ -3,16 +3,20 @@ package com.daignosis.daignosis.ui.consultation
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daignosis.daignosis.R
 import com.daignosis.daignosis.data.response.Data
+import com.daignosis.daignosis.data.response.DataHistory
 import com.daignosis.daignosis.data.response.DataItem
+import com.daignosis.daignosis.data.response.DataItemMsg
 import com.daignosis.daignosis.databinding.ActivityConsultBinding
 import com.daignosis.daignosis.ui.adapter.ArticleAdapter
 import com.daignosis.daignosis.ui.adapter.ChatAdapter
+import com.daignosis.daignosis.ui.article.DetailArticleActivity
 import com.daignosis.daignosis.utils.Result
 import com.daignosis.daignosis.utils.ViewModelFactory
 
@@ -26,6 +30,8 @@ class ConsultActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(R.string.consult)
+
+        setDetail()
 
         viewModel = ViewModelProvider(
             this, ViewModelFactory(this)
@@ -46,6 +52,7 @@ class ConsultActivity : AppCompatActivity() {
         viewModel.getToken().observe(this){
             val token = it.token
             viewModel.getSession().observe(this){
+                val sessionId = it.sessionId
                 viewModel.sendMsg(token, userMsg, it.sessionId).first.observe(this){
                     when(it) {
                         is Result.Loading -> {
@@ -54,6 +61,10 @@ class ConsultActivity : AppCompatActivity() {
                         is Result.Success -> {
                             binding.messageEditText.setText("")
                             binding.progressBar8.visibility = View.GONE
+                            viewModel.historyMsg(token,sessionId)
+                            viewModel.historyMsg(token, sessionId).second.observe(this){
+                                setRecycler(it)
+                            }
                         }
                         is Result.Error -> {
                             binding.progressBar8.visibility = View.GONE
@@ -63,18 +74,23 @@ class ConsultActivity : AppCompatActivity() {
                         }
                     }
                 }
-                viewModel.sendMsg(token,userMsg,it.sessionId).second.observe(this){
-                    setRecycler(it)
-                }
             }
         }
     }
-    private fun setRecycler(msg: List<Data>){
+    private fun setRecycler(msg: List<DataItemMsg>){
         binding.messageRecyclerView.apply {
-            layoutManager = LinearLayoutManager(this@ConsultActivity, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(
+                this@ConsultActivity, LinearLayoutManager.VERTICAL, true)
             adapter = ChatAdapter(msg)
         }
     }
+
+    private fun setDetail() {
+        val detailArticle = intent.getParcelableExtra<DataHistory>(DetailArticleActivity.EXTRA_ARTICLE)
+        detailArticle?.sessionId
+    }
+
+
     companion object {
         const val EXTRA_SESSION = "extra_session"
     }

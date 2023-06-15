@@ -73,4 +73,10 @@ interface ApiService {
         @Field("message") message: String,
         @Field("session_id") sessionId: String
     ): Call<MessageResponse>
+
+    @POST("messages/{id}")
+    fun getMsg(
+        @Header("Authorization") token: String,
+        @Path("id") sessionId: String
+    ): Call<HistoryMsgResponse>
 }

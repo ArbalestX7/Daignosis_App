@@ -6,6 +6,7 @@ import com.daignosis.daignosis.data.repository.DaignosisRepository
 class ProfileViewModel(private val repository: DaignosisRepository): ViewModel() {
     fun getToken() = repository.getToken()
     fun logout() = repository.logout()
+    fun rmvSession() = repository.rmvSession()
     fun getUserProfile(token: String) = repository.getUserProfile(token)
 
     fun editProfile(

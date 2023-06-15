@@ -53,6 +53,8 @@
     <string name="fail_sendMsg">Gagal Mengirim Pesan </string>
     <string name="must_login">Silahkan login terlebih dahulu</string>
     <string name="fail_history">Gagal Mendapatkan Histori Konsultasi</string>
+    <string name="me">Saya</string>
+    <string name="bot">Daignosis Bot</string>
 
     //Profile
     <string name="profile">Profil</string>

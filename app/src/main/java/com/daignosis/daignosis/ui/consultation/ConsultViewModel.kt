@@ -11,4 +11,6 @@ class ConsultViewModel (private val repository: DaignosisRepository): ViewModel(
 
     fun sendMsg(token:String, message:String, sessionId:String)
     = repository.message(token, message, sessionId)
+
+    fun historyMsg(token: String,sessionId: String) = repository.historyMessage(token, sessionId)
 }

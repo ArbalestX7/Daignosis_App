@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.daignosis.daignosis.R
 import com.daignosis.daignosis.data.response.DataItem
 import com.daignosis.daignosis.databinding.ActivityMainBinding
 import com.daignosis.daignosis.ui.adapter.MainAdapter
@@ -55,11 +56,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,ArticleActivity::class.java))
         }
         binding.btnConsult.setOnClickListener {
-            startActivity(Intent(this,HistoryActivity::class.java))
+            checkTokenAI()
         }
     }
 
-
+    private fun checkTokenAI() {
+        mainViewModel.getToken().observe(this) {
+            if (it.token.isEmpty()) {
+                Toast.makeText(this, R.string.must_login, Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,LoginActivity::class.java))
+                finish()
+            }
+            else {
+                startActivity(Intent(this,HistoryActivity::class.java))
+            }
+        }
+    }
     private fun checkToken() {
         mainViewModel.getToken().observe(this) {
             if (it.token.isEmpty()) {

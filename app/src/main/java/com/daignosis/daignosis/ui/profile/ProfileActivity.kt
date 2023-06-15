@@ -81,7 +81,7 @@ class ProfileActivity : AppCompatActivity() {
             day
         )
 
-        datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
+        datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
         datePickerDialog.show()
     }
 
@@ -98,6 +98,7 @@ class ProfileActivity : AppCompatActivity() {
             setMessage(resources.getString(R.string.log_desc))
             setPositiveButton(resources.getString(R.string.yes)) { _, _ ->
                 viewModel.logout()
+                viewModel.rmvSession()
                 intent = Intent(this@ProfileActivity, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

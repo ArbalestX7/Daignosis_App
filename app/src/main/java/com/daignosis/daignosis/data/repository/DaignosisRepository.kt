@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import com.daignosis.daignosis.data.Message
 import com.daignosis.daignosis.data.api.ApiService
 import com.daignosis.daignosis.data.response.*
 import com.daignosis.daignosis.utils.UserPref
@@ -365,5 +366,38 @@ class DaignosisRepository (
             }
         })
         return Pair(history,data)
+    }
+
+    fun historyMessage(
+        token: String, sessionId: String
+    ): Pair<LiveData<Result<Boolean>>, LiveData<List<DataItemMsg>>>{
+        val historyMsg = MutableLiveData<Result<Boolean>>()
+        val data = MutableLiveData<List<DataItemMsg>>()
+
+        historyMsg.value = Result.Loading
+        val client = apiService.getMsg("Bearer $token",sessionId)
+        client.enqueue(object : Callback<HistoryMsgResponse>{
+            override fun onResponse(
+                call: Call<HistoryMsgResponse>,
+                response: Response<HistoryMsgResponse>,
+            ) {
+                if (response.isSuccessful){
+                    val responseBody = response.body()
+                    if (responseBody != null){
+                        data.value = responseBody.data
+                        historyMsg.value = Result.Success(true)
+                    } else {
+                        historyMsg.value = Result.Error("Error")
+                        Log.e(ContentValues.TAG, "onResponse: Error ${response.message()}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<HistoryMsgResponse>, t: Throwable) {
+                historyMsg.value = Result.Error("Error")
+                Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+        })
+        return Pair(historyMsg,data)
     }
 }
