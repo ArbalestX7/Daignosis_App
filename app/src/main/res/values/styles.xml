@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="daignosis">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#3E7A9C</item>
-    </style>
 
     <style name="RoundedSquare">
         <item name="cornerSize">18%</item>

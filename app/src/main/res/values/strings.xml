@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Daignosis App</string>
-    <string name="daignosis">Daignosis</string>
 
     //preview tools
     <string name="title_article">Siapa saja yang rentan terkena osteoporosis ?</string>
@@ -9,7 +8,6 @@
     //ContentDesc
     <string name="logo_daig">Daignosis Logo</string>
     <string name="article_photo">Foto Artikel</string>
-    <string name="photo_profile">Foto Profil</string>
     <string name="fab_add">Tombol mengambang tambah sesi baru</string>
 
     //Loginpage
@@ -21,7 +19,6 @@
     <string name="register_desc">Apakah Anda belum punya akun ?</string>
     <string name="register"><u>Register</u></string>
     <string name="forgot">Forgot Password ?</string>
-    <string name="invalid_email">Format Email salah</string>
 
     //Register
     <string name="snack_regis">Register Berhasil !</string>
@@ -81,7 +78,6 @@
     //Article
     <string name="title_topbar_listArtikel">Artikel</string>
     <string name="title_topbar_detail">Detail Artikel</string>
-    <string name="verified"> - Artikel ini telah terverifikasi oleh tim Daignosis</string>
 
     <string name="desc">Daignosis, Jakarta – Osteoporosis adalah masalah tulang yang paling diwaspadai oleh orang lanjut usia.
 

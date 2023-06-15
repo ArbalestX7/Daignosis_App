@@ -2,11 +2,11 @@ package com.daignosis.daignosis.ui.forgotpw
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.daignosis.daignosis.R
 import com.daignosis.daignosis.databinding.ActivityForgotPwBinding

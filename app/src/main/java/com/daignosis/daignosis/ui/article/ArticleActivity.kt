@@ -1,15 +1,15 @@
 package com.daignosis.daignosis.ui.article
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.daignosis.daignosis.utils.Result
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daignosis.daignosis.data.response.DataItem
 import com.daignosis.daignosis.databinding.ActivityArticleBinding
 import com.daignosis.daignosis.ui.adapter.ArticleAdapter
+import com.daignosis.daignosis.utils.Result
 import com.daignosis.daignosis.utils.ViewModelFactory
 
 @Suppress("DEPRECATION")

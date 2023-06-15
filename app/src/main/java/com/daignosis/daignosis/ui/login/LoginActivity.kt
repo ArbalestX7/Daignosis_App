@@ -3,14 +3,12 @@ package com.daignosis.daignosis.ui.login
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.core.widget.doOnTextChanged
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -20,9 +18,9 @@ import com.daignosis.daignosis.databinding.ActivityLoginBinding
 import com.daignosis.daignosis.ui.forgotpw.ForgotPwActivity
 import com.daignosis.daignosis.ui.main.MainActivity
 import com.daignosis.daignosis.ui.register.RegisterActivity
-import com.daignosis.daignosis.utils.ViewModelFactory
 import com.daignosis.daignosis.utils.Result
 import com.daignosis.daignosis.utils.Util.isValidEmail
+import com.daignosis.daignosis.utils.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "pref")

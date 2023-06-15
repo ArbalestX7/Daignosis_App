@@ -5,12 +5,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.daignosis.daignosis.R
-import com.daignosis.daignosis.data.Message
-import com.daignosis.daignosis.data.response.Data
 import com.daignosis.daignosis.data.response.DataItemMsg
 import com.daignosis.daignosis.databinding.ItemMessageBinding
 import com.daignosis.daignosis.utils.Util.withDateFormat
-import com.daignosis.daignosis.utils.Util.withFormatDateMsg
 
 class ChatAdapter (
     private val listMessage: List<DataItemMsg>

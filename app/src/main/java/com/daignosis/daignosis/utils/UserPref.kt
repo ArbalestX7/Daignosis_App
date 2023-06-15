@@ -3,12 +3,9 @@ package com.daignosis.daignosis.utils
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.daignosis.daignosis.data.response.Data
 import com.daignosis.daignosis.data.response.DataLogin
 import com.daignosis.daignosis.data.response.DataSession
-import com.daignosis.daignosis.data.response.DataUser
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

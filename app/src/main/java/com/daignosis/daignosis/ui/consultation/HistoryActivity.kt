@@ -1,20 +1,17 @@
 package com.daignosis.daignosis.ui.consultation
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daignosis.daignosis.R
-import com.daignosis.daignosis.data.response.Data
 import com.daignosis.daignosis.data.response.DataHistory
 import com.daignosis.daignosis.databinding.ActivityHistoryBinding
-import com.daignosis.daignosis.ui.adapter.ChatAdapter
 import com.daignosis.daignosis.ui.adapter.HistoryAdapter
 import com.daignosis.daignosis.ui.login.LoginActivity
-import com.daignosis.daignosis.ui.profile.ProfileViewModel
 import com.daignosis.daignosis.utils.Result
 import com.daignosis.daignosis.utils.ViewModelFactory
 

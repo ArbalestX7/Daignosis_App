@@ -3,7 +3,6 @@ package com.daignosis.daignosis.ui.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.daignosis.daignosis.R
@@ -11,7 +10,6 @@ import com.daignosis.daignosis.data.response.DataItem
 import com.daignosis.daignosis.databinding.ItemArticleBinding
 import com.daignosis.daignosis.ui.article.DetailArticleActivity
 import com.daignosis.daignosis.utils.Util.withDateFormat
-import java.util.*
 
 class ArticleAdapter (
     private val listArticle: List<DataItem>

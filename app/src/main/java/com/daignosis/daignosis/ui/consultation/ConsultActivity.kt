@@ -1,20 +1,15 @@
 package com.daignosis.daignosis.ui.consultation
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daignosis.daignosis.R
-import com.daignosis.daignosis.data.response.Data
 import com.daignosis.daignosis.data.response.DataHistory
-import com.daignosis.daignosis.data.response.DataItem
 import com.daignosis.daignosis.data.response.DataItemMsg
 import com.daignosis.daignosis.databinding.ActivityConsultBinding
-import com.daignosis.daignosis.ui.adapter.ArticleAdapter
 import com.daignosis.daignosis.ui.adapter.ChatAdapter
 import com.daignosis.daignosis.ui.article.DetailArticleActivity
 import com.daignosis.daignosis.utils.Result
@@ -88,10 +83,5 @@ class ConsultActivity : AppCompatActivity() {
     private fun setDetail() {
         val detailArticle = intent.getParcelableExtra<DataHistory>(DetailArticleActivity.EXTRA_ARTICLE)
         detailArticle?.sessionId
-    }
-
-
-    companion object {
-        const val EXTRA_SESSION = "extra_session"
     }
 }

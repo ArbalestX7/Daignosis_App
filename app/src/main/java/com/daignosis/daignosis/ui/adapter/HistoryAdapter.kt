@@ -1,22 +1,11 @@
 package com.daignosis.daignosis.ui.adapter
 
-import android.content.ContentValues
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.daignosis.daignosis.data.repository.DaignosisRepository
 import com.daignosis.daignosis.data.response.DataHistory
-import com.daignosis.daignosis.data.response.DataSession
 import com.daignosis.daignosis.databinding.ItemHistoryBinding
-import com.daignosis.daignosis.databinding.ItemMessageBinding
-import com.daignosis.daignosis.ui.article.DetailArticleActivity
-import com.daignosis.daignosis.ui.consultation.ConsultActivity
-import com.daignosis.daignosis.utils.UserPref
 import com.daignosis.daignosis.utils.Util.withDateFormat
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 class HistoryAdapter (
     private val listMessage: List<DataHistory>
